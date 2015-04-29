@@ -106,6 +106,7 @@ static struct msm_bus_paths bw_level_tbl[] __initdata = {
 	[3] = BW_MBPS(2128), /* At least 266 MHz on bus. */
 	[4] = BW_MBPS(3200), /* At least 400 MHz on bus. */
 	[5] = BW_MBPS(4264), /* At least 533 MHz on bus. */
+	[6] = BW_MBPS(5290), /* At least 533 MHz on bus. */
 };
 
 static struct msm_bus_scale_pdata bus_scale_data __initdata = {
@@ -135,8 +136,12 @@ static struct l2_level l2_freq_tbl[] __initdata = {
 };
 
 static struct acpu_level tbl_slow[] __initdata = {
+#ifdef CONFIG_CPU_UNDERCLOCK
+	{ 1, {    94500, HFPLL, 2, 0x07 }, L2(0),   950000 },
+	{ 1, {   189000, HFPLL, 2, 0x0E }, L2(0),   950000 },
+	{ 1, {   243000, HFPLL, 2, 0x12 }, L2(0),   950000 },
+#endif
 	{ 1, {   384000, PLL_8, 0, 0x00 }, L2(0),   950000 },
-	{ 1, {   405000, HFPLL, 2, 0x1E }, L2(5),   950000 },
 	{ 0, {   432000, HFPLL, 2, 0x20 }, L2(5),   975000 },
 	{ 1, {   486000, HFPLL, 2, 0x24 }, L2(5),   975000 },
 	{ 0, {   540000, HFPLL, 2, 0x28 }, L2(5),  1000000 },
@@ -162,8 +167,12 @@ static struct acpu_level tbl_slow[] __initdata = {
 };
 
 static struct acpu_level tbl_nom[] __initdata = {
+#ifdef CONFIG_CPU_UNDERCLOCK
+	{ 1, {    94500, HFPLL, 2, 0x07 }, L2(0),   900000 },
+	{ 1, {   189000, HFPLL, 2, 0x0E }, L2(0),   900000 },
+	{ 1, {   243000, HFPLL, 2, 0x12 }, L2(0),   900000 },
+#endif
 	{ 1, {   384000, PLL_8, 0, 0x00 }, L2(0),   900000 },
-	{ 1, {   405000, HFPLL, 2, 0x1E }, L2(5),   900000 },
 	{ 0, {   432000, HFPLL, 2, 0x20 }, L2(5),   925000 },
 	{ 1, {   486000, HFPLL, 2, 0x24 }, L2(5),   925000 },
 	{ 0, {   540000, HFPLL, 2, 0x28 }, L2(5),   950000 },
@@ -189,8 +198,12 @@ static struct acpu_level tbl_nom[] __initdata = {
 };
 
 static struct acpu_level tbl_fast[] __initdata = {
+#ifdef CONFIG_CPU_UNDERCLOCK
+	{ 1, {    94500, HFPLL, 2, 0x07 }, L2(0),   850000 },
+	{ 1, {   189000, HFPLL, 2, 0x0E }, L2(0),   850000 },
+	{ 1, {   243000, HFPLL, 2, 0x12 }, L2(0),   850000 },
+#endif
 	{ 1, {   384000, PLL_8, 0, 0x00 }, L2(0),   850000 },
-	{ 1, {   405000, HFPLL, 2, 0x1E }, L2(5),   850000 },
 	{ 0, {   432000, HFPLL, 2, 0x20 }, L2(5),   875000 },
 	{ 1, {   486000, HFPLL, 2, 0x24 }, L2(5),   875000 },
 	{ 0, {   540000, HFPLL, 2, 0x28 }, L2(5),   900000 },
@@ -216,8 +229,12 @@ static struct acpu_level tbl_fast[] __initdata = {
 };
 
 static struct acpu_level tbl_faster[] __initdata = {
+#ifdef CONFIG_CPU_UNDERCLOCK
+	{ 1, {    94500, HFPLL, 2, 0x07 }, L2(0),   850000 },
+	{ 1, {   189000, HFPLL, 2, 0x0E }, L2(0),   850000 },
+	{ 1, {   243000, HFPLL, 2, 0x12 }, L2(0),   850000 },
+#endif
 	{ 1, {   384000, PLL_8, 0, 0x00 }, L2(0),   850000 },
-	{ 1, {   405000, HFPLL, 2, 0x1E }, L2(5),   850000 },
 	{ 0, {   432000, HFPLL, 2, 0x20 }, L2(5),   875000 },
 	{ 1, {   486000, HFPLL, 2, 0x24 }, L2(5),   875000 },
 	{ 0, {   540000, HFPLL, 2, 0x28 }, L2(5),   900000 },
